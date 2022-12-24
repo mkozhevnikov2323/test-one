@@ -1,3 +1,7 @@
 .full-height {
     min-height: 100vh;
 }
+.mh-150 {
+    min-height: 150px!important;
+    height: 150px!important;
+}
