@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -25,6 +29,12 @@
                 <input type="password" name="password-confirm" class="form-control" id="floatingPassword" placeholder="Повторите пароль">
                 <label for="floatingPassword">Повторите пароль</label>
             </div>
+            <?php
+                if ($_SESSION['message']) {
+                    echo '<p class="mb-3">' . $_SESSION['message'] . '</p>';
+                }
+                unset($_SESSION['message']);
+            ?>
             <div class="col-auto d-flex justify-content-end gap-3 mb-5">
                 <button type="reset" class="btn btn-danger shadow-sm">Очистить форму</button>
                 <button type="submit" class="btn btn-success shadow-sm">Зарегистрироваться</button>
