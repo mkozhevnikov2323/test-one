@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if (!$_SESSION['user']) {
+        header('Location: login.php');
+    }
+?>
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -10,10 +17,15 @@
     <link rel="stylesheet" href="./css/global.css">
 </head>
 <body class="full-height">
+<header class="container-fluid bg-dark fixed-top">
+    <nav class="navbar bg-dark container d-flex justify-content-end">
+        <a class="btn btn-sm btn-outline-secondary" href="includes/logout.php">Выход из аккаунта</a>
+    </nav>
+</header>
 <main class="d-flex justify-content-center align-items-center full-height bg-secondary">
     <form class="col-12 col-sm-10 col-md-6 col-lg-4 p-3 border rounded bg-secondary shadow-lg">
         <h1 class="mb-3">Обратная связь</h1>
-        <p>Пользователь: </p>
+        <p>Пользователь: <?= $_SESSION['user']['email'] ?></p>
 
         <fieldset class="mb-3">
             <div class="form-floating mb-3">
