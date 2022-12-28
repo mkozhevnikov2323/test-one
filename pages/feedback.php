@@ -3,27 +3,16 @@
     if (!$_SESSION['user']) {
         header('Location: login.php');
     }
+    require_once '../components/header.php';
 ?>
 
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/global.css">
-</head>
-<body class="full-height">
 <header class="container-fluid bg-dark fixed-top">
     <nav class="navbar bg-dark container d-flex justify-content-end">
-        <a class="btn btn-sm btn-outline-secondary" href="includes/logout.php">Выход из аккаунта</a>
+        <a class="btn btn-sm btn-outline-secondary" href="../handlers/logout.php">Выход из аккаунта</a>
     </nav>
 </header>
 <main class="d-flex justify-content-center align-items-center full-height bg-secondary">
-    <form class="col-12 col-sm-10 col-md-6 col-lg-4 p-3 border rounded bg-secondary shadow-lg" action="includes/sendFeedback.php" method="post">
+    <form class="col-12 col-sm-10 col-md-6 col-lg-4 p-3 border rounded bg-secondary shadow-lg" action="../handlers/sendFeedback.php" method="post">
         <h1 class="mb-3">Обратная связь</h1>
         <p>Пользователь: <?= $_SESSION['user']['email'] ?></p>
 
@@ -82,5 +71,5 @@
         </fieldset>
     </form>
 </main>
-</body>
-</html>
+
+<?php require_once '../components/footer.php' ?>
