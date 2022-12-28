@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'connect.php';
+require_once '../src/db/connect.php';
 
 $email = $_POST['email'];
 $password = md5($_POST['password']);
@@ -15,10 +15,10 @@ if (isset($connect)) {
             "email" => $user['email']
         ];
 
-        header('Location: ../feedback.php');
+        header('Location: ../pages/feedback.php');
 
     } else {
         $_SESSION['message'] = 'Неверный логин или пароль';
-        header('Location: ../login.php');
+        header('Location: ../pages/login.php');
     }
 }

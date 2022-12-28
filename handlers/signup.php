@@ -13,8 +13,8 @@ if ($password === $passwordConfirm) {
     }
 
     $_SESSION['message'] = 'Регистрация прошла успешно';
-    header('Location: ../login.php');
+    header('Location: ../pages/login.php');
 } else {
     $_SESSION['message'] = 'Пароли не совпадают';
-    header('Location: ../register.php');
+    header('Location: ../pages/register.php');
 }
