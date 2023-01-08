@@ -27,7 +27,7 @@
             </div>
             <div class="form-floating">
                 <select class="form-select shadow-sm" name="employeeCategory[]" id="floatingSelect" aria-label="Floating label select example">
-                    <option selected>Категория сотрудника:</option>
+                    <option value="0" selected>Категория сотрудника:</option>
                     <option value="1">Руководитель</option>
                     <option value="2">Ведущий специалист</option>
                     <option value="3">Специалист</option>
@@ -38,11 +38,11 @@
 
         <fieldset class="mb-3">
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions[]" id="inlineRadio1" value="Отзыв" checked>
+                <input class="form-check-input" type="radio" name="inlineRadioOptions[]" id="inlineRadio1" value="1" checked>
                 <label class="form-check-label" for="inlineRadio1">Отзыв</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions[]" id="inlineRadio2" value="Предложение">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions[]" id="inlineRadio2" value="2">
                 <label class="form-check-label" for="inlineRadio2">Предложение</label>
             </div>
         </fieldset>
