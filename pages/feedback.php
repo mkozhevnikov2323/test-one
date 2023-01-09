@@ -72,7 +72,13 @@
         ?>
 
         <fieldset class="d-flex justify-content-end gap-3">
-            <button type="reset" class="btn btn-danger shadow-sm">Очистить форму</button>
+            <?php
+            if ($_SESSION['user']['name'] or $_SESSION['user']['comment']) {
+                echo '<a href="../src/functions/reselFields.php?reset=true" class="btn btn-danger shadow-sm">Очистить форму</a>';
+            } else {
+                echo '<button type="reset" class="btn btn-danger shadow-sm">Очистить форму</button>';
+            }
+            ?>
             <button type="submit" class="btn btn-success shadow-sm">Отправить сообщение</button>
         </fieldset>
     </form>

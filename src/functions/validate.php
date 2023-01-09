@@ -9,6 +9,7 @@ function validate($str): string
     return htmlentities($str);
 }
 
+// проверка на пустоту
 function isNotEmpty($str): bool
 {
     if ((mb_strlen($str) > 0)) {
