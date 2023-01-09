@@ -18,11 +18,12 @@
 
         <fieldset class="mb-3">
             <div class="form-floating mb-3">
-                <input type="text" name="name" class="form-control shadow-sm" id="floatingInput" placeholder="Введите имя">
+                <input type="text" name="name" class="form-control shadow-sm" id="floatingInput" placeholder="Введите имя" value="<?= $_SESSION['user']['name'] ?? '' ?>" required>
                 <label for="floatingInput">Введите имя:</label>
             </div>
+
             <div class="form-floating mb-3">
-                <textarea class="form-control mh-150 shadow-sm" name="comment" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                <textarea class="form-control mh-150 shadow-sm" name="comment" placeholder="Leave a comment here" id="floatingTextarea" required><?= $_SESSION['user']['comment'] ?? '' ?></textarea>
                 <label for="floatingTextarea">Комментарий:</label>
             </div>
             <div class="form-floating">
@@ -49,11 +50,11 @@
 
         <fieldset class="mb-5">
             <div class="form-check form-check-inline">
-                <input class="form-check-input" name="salesDepartment" type="checkbox" id="inlineCheckbox1" value="1" checked>
+                <input class="form-check-input" name="salesDepartment" type="checkbox" id="inlineCheckbox1" value="1" >
                 <label class="form-check-label" for="inlineCheckbox1">Отдел продаж</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" name="supplyDepartment" type="checkbox" id="inlineCheckbox2" value="1" checked>
+                <input class="form-check-input" name="supplyDepartment" type="checkbox" id="inlineCheckbox2" value="1" >
                 <label class="form-check-label" for="inlineCheckbox2">Отдел снабжения</label>
             </div>
         </fieldset>
@@ -63,6 +64,11 @@
             echo '<p class="mb-3">' . $_SESSION['message'] . '</p>';
         }
         unset($_SESSION['message']);
+
+        if ($_SESSION['errorMessage']) {
+            echo '<p class="mb-3 text-danger">' . $_SESSION['errorMessage'] . '</p>';
+        }
+        unset($_SESSION['errorMessage']);
         ?>
 
         <fieldset class="d-flex justify-content-end gap-3">

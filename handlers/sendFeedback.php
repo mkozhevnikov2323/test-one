@@ -1,21 +1,37 @@
 <?php
 session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require_once '../src/db/connect.php';
+require_once '../src/functions/validate.php';
 
-$name = $_POST['name'];
-$comment = $_POST['comment'];
-$employeeCategory = $_POST['employeeCategory'];
-$commentCategory = $_POST['inlineRadioOptions'];
+$name = validate($_POST['name']);
+$comment = validate($_POST['comment']);
+$employeeCategory = $_POST['employeeCategory'][0];
+$commentCategory = $_POST['inlineRadioOptions'][0];
 $salesDepartment = $_POST['salesDepartment'];
 $supplyDepartment = $_POST['supplyDepartment'];
-
 $currentUserId = $_SESSION['user']['id'];
 
-if (isset($employeeCategory)) {
-    if ($employeeCategory[0] === '0') {
-        $_SESSION['message'] = 'Выберите категорию сотрудника';
-        header('Location: ../pages/feedback.php');
-    }
+$currentFields = [
+    "name" => $name,
+    "comment" => $comment,
+    "employeeCategory" => $employeeCategory,
+    "commentCategory" => $commentCategory,
+//    "salesDepartment" => $salesDepartment,
+//    "supplyDepartment" => $supplyDepartment,
+];
+
+$_SESSION['user'] = array_merge($_SESSION['user'], $currentFields);
+
+if (!isNotEmpty($name) or !isNotEmpty($comment)) {
+    return false;
+}
+
+if ($employeeCategory[0] === '0') {
+    $_SESSION['errorMessage'] = 'Выберите категорию сотрудника';
+    header('Location: ../pages/feedback.php');
 }
 
 if ($salesDepartment === NULL) {
