@@ -22,7 +22,7 @@ $currentFields = [
 ];
 $_SESSION['user'] = array_merge($_SESSION['user'], $currentFields);
 
-// проверка на множественные пробелы полей
+// запрет на отправку множественныех пробелов
 if (!isNotEmpty($name) or !isNotEmpty($comment)) {
     return false;
 }
@@ -40,13 +40,8 @@ if ($supplyDepartment === NULL) {
     $supplyDepartment = (int) $supplyDepartment;
 }
 
-if (isset($connect)) {
-    mysqli_query($connect, "INSERT INTO `comments` (`id`, `name`, `comment`, `user_id`, `employee_category_id`, `comment_category_id`, `sales_department`, `supply_department`) VALUES (NULL, '$name', '$comment', '$currentUserId', '$employeeCategory[0]', '$commentCategory[0]', '$salesDepartment', '$supplyDepartment')");
+make("INSERT INTO `comments` (`id`, `name`, `comment`, `user_id`, `employee_category_id`, `comment_category_id`, `sales_department`, `supply_department`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);", [NULL, $name, $comment, $currentUserId, $employeeCategory[0], $commentCategory[0], $salesDepartment, $supplyDepartment]);
 
-    $_SESSION['message'] = 'Сообщение отправлено';
-    resetTextFields();
-    header('Location: ../pages/feedback.php');
-} else {
-    $_SESSION['errorMessage'] = 'Ошибка';
-    header('Location: ../pages/feedback.php');
-}
+$_SESSION['message'] = 'Сообщение отправлено';
+resetTextFields();
+header('Location: ../pages/feedback.php');

@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 function resetTextFields(): void
 {
     $_SESSION['user']['name'] = '';
