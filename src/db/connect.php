@@ -1,9 +1,13 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+require_once __DIR__ . '/../../config.php';
 function connect() {
-    $hostname = 'localhost'; //apache_getenv('host');
-    $username = 'root';
-    $password = 'Ms_0289!';
-    $database = 'test-one-gootax';
+    $hostname = HOSTNAME;
+    $username = DB_USERNAME;
+    $password = DB_PASSWORD;
+    $database = DB_NAME;
 
     try {
         return new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
