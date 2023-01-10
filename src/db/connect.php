@@ -28,8 +28,7 @@ function query($sql, $params = []): array
     return $result;
 }
 
-//метод для добавления, удаления, изменения данных, если успешно то возвратит 1
-//INSERT, UPDATE, DELETE
+//метод для добавления, удаления, изменения данных, если успешно то возвратит 1 (INSERT, UPDATE, DELETE)
 function make($sql, $params = []): bool
 {
     $sth = connect();

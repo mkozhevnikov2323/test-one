@@ -17,7 +17,6 @@ if ($password === $passwordConfirm) {
         header('Location: ../pages/register.php');
         return false;
     }
-
     if (isEmailDuplicate($email)) {
         $_SESSION['errorMessage'] = 'Пользователь уже зарегистрирован';
         header('Location: ../pages/register.php');
