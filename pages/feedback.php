@@ -23,7 +23,7 @@
             </div>
 
             <div class="form-floating mb-3">
-                <textarea class="form-control mh-150 shadow-sm" name="comment" placeholder="Leave a comment here" id="floatingTextarea" required><?= $_SESSION['user']['comment'] ?? '' ?></textarea>
+                <textarea class="form-control mh-150 shadow-sm" name="comment" placeholder="Leave a comment here" id="floatingTextarea" maxlength="350" required><?= $_SESSION['user']['comment'] ?? '' ?></textarea>
                 <label for="floatingTextarea">Комментарий:</label>
             </div>
             <div class="form-floating">
